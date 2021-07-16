@@ -73,15 +73,17 @@ class Championship {
           $match = new FootballMatch($this->qualifieds[$i]->getTeam(), $this->qualifieds[$i + 1]->getTeam());
           echo $this->qualifieds[$i]->getTeam()->getCountry().' vs '.$this->qualifieds[$i + 1]->getTeam()->getCountry().'  ('.$match->getScore1().'-'.$match->getScore2().') <br>';
           
-          if($match->getWinner()->getCountry() == $this->qualifieds[$i]->getTeam() -> getCountry()) {
+          if($match->getWinner() == null) {
             $this->qualifieds[$i]->setQualified(true);
-            $this->qualifieds[$i + 1]->setQualified(false);
-          } else if($match->getWinner()->getCountry() == $this->qualifieds[$i + 1]->getTeam()->getCountry()){
-            $this->qualifieds[$i]->setQualified(false);
             $this->qualifieds[$i + 1]->setQualified(true);
           } else {
-            $this->qualifieds[$i]->setQualified(true);
-            $this->qualifieds[$i + 1]->setQualified(true);
+            if($match->getWinner()->getCountry() == $this->qualifieds[$i]->getTeam() -> getCountry()) {
+              $this->qualifieds[$i]->setQualified(true);
+              $this->qualifieds[$i + 1]->setQualified(false);
+            } else {
+              $this->qualifieds[$i]->setQualified(false);
+              $this->qualifieds[$i + 1]->setQualified(true);
+            }
           }
         }
       }
