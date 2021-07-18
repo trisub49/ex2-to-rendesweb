@@ -3,10 +3,16 @@
 class Qualified {
   private $team;
   private $isQualified;
+  private $isRaised;
 
-  function __construct($team, $isQualified) {
+  function __construct($team, $isQualified, $isRaised) {
     $this->team = $team;
     $this->isQualified = $isQualified;
+    $this->isRaised = $isRaised;
+  }
+
+  public function isRaised() {
+    return $this->isRaised;
   }
 
   public function isQualified() {

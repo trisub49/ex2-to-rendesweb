@@ -4,12 +4,17 @@ class Team {
 
   private $name;
   private $country;
-  private $scores;
+  private $score;
+  private $goals;
+  private $scored;
+  private $draw;
 
-  function __construct($name, $country, $scores) {
+  function __construct($name, $country) {
     $this->name = $name;
     $this->country = $country;
-    $this->scores = $scores;
+    $this->score = 0;
+    $this->goals = 0;
+    $this->scored = 0;
   }
 
   public function getName() {
@@ -26,13 +31,26 @@ class Team {
     $this->country = $country;
   }
 
-  public function getScores() {
-    return $this->scores;
+  public function getScore() {
+    return $this->score;
   }
-  public function setScores($scores) {
-    $this->scores = $scores;
+  public function addScore($score) {
+    $this->score += $score;
   }
 
+  public function getScored() {
+    return $this->scored;
+  }
+  public function addScored($scored) {
+    $this->scored += $scored;
+  }
+  
+  public function getGoals() {
+    return $this->goals;
+  }
+  public function addGoals($goals) {
+    $this->goals += $goals;
+  }
 }
 
 ?>
